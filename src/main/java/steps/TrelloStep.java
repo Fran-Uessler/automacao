@@ -12,7 +12,7 @@ public class TrelloStep {
     public void queEuEstejaLogadoNoTrello() throws Throwable {
         loginPage = new LoginPage();
         loginPage.access();
-        loginPage.doLogin( "Fran-Uessler",  "franfm90");
+        loginPage.doLogin( "francieleferreirauessler",  "franfm90");
         Assert.assertEquals("Página Inicial do Trello",
             loginPage.checkInitialPage());
 

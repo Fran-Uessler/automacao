@@ -1,11 +1,12 @@
 package pom;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import util.Hook;
+
+import static util.Tools.waitBy;
 
 public class LoginPage {
     @FindBy(how = How.ID, using = "user")
@@ -27,13 +28,14 @@ public class LoginPage {
         }
 
         public LoginPage doLogin(String user, String password){
-        userInput.sendKeys(user);
-        passwordInput.sendKeys(password);
-        loginButton.click();
-        return this;
+            waitBy(userInput).sendKeys(user);
+            waitBy(passwordInput).sendKeys(password);
+            waitBy(loginButton).click();
+            return this;
         }
 
-        public String checkInitialPage(){
-        return initialPage.getAttribute("aria-label");
+
+    public String checkInitialPage(){
+        return waitBy(initialPage).getAttribute("aria-label");
         }
 }
